@@ -1170,7 +1170,7 @@ SMRegExpMacroAssembler::Implementation() {
 /*static */
 uint32_t SMRegExpMacroAssembler::CaseInsensitiveCompareStrings(
     const char16_t* substring1, const char16_t* substring2, size_t byteLength) {
-  js::AutoUnsafeCallWithABI unsafe;
+  JS::AutoCheckCannotGC nogc;
 
   MOZ_ASSERT(byteLength % sizeof(char16_t) == 0);
   size_t length = byteLength / sizeof(char16_t);
@@ -1193,7 +1193,7 @@ uint32_t SMRegExpMacroAssembler::CaseInsensitiveCompareStrings(
 /*static */
 uint32_t SMRegExpMacroAssembler::CaseInsensitiveCompareUCStrings(
     const char16_t* substring1, const char16_t* substring2, size_t byteLength) {
-  js::AutoUnsafeCallWithABI unsafe;
+  JS::AutoCheckCannotGC nogc;
 
   MOZ_ASSERT(byteLength % sizeof(char16_t) == 0);
   size_t length = byteLength / sizeof(char16_t);
@@ -1215,7 +1215,7 @@ uint32_t SMRegExpMacroAssembler::CaseInsensitiveCompareUCStrings(
 
 /* static */
 bool SMRegExpMacroAssembler::GrowBacktrackStack(RegExpStack* regexp_stack) {
-  js::AutoUnsafeCallWithABI unsafe;
+  JS::AutoCheckCannotGC nogc;
   size_t size = regexp_stack->stack_capacity();
   return !!regexp_stack->EnsureCapacity(size * 2);
 }
