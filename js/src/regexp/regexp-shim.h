@@ -20,6 +20,7 @@
 
 #include <algorithm>
 #include <cctype>
+#include <iostream> // needed for gcc 10
 
 #include "jit/Label.h"
 #include "jit/shared/Assembler-shared.h"
